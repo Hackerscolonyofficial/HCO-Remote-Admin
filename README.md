@@ -24,9 +24,9 @@ Follow these steps to set up and run the tool locally for educational testing:
 ### 1. Clone the Repository
 Open your terminal (Termux or Linux) and clone the repository:
 ```bash
-git clone [https://github.com/YOUR-USERNAME/HCO-Remote-Admin.git](https://github.com/YOUR-USERNAME/HCO-Remote-Admin.git)
-cd HCO-Remote-Admin
+git clone https://github.com/Hackerscolonyofficial/HCO-Remote-Admin.git
 
+cd HCO-Remote-Admin
 ```
 2. Run the Server
 Start the server script on your primary control device:
