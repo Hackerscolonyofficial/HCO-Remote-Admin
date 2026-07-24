@@ -32,13 +32,11 @@ cd HCO-Remote-Admin
 Start the server script on your primary control device:
 ```
 python server.py
-
 ```
 3. Run the Client
 In a separate terminal or test environment, run the client script:
 ```
 python client.py
-
 ```
 📺 Support & Learn More
 If you found this tool helpful and want to learn more about ethical hacking,
